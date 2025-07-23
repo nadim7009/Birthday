@@ -1,0 +1,746 @@
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fef6fb 0%, #f3e8ff 100%);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== Birthday Calendar Stylish Redesign ========== */
+
+.birthday-calendar {
+  width: 90%;
+  max-width: 420px;
+  background: #fdfdfd;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.4s ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.calendar-header {
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  color: #fff;
+  padding: 25px 20px;
+  text-align: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.age-badge {
+  position: absolute;
+  top: -28px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #3498db;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #1b1b1b;
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+  animation: pulse 1.8s infinite;
+  border: 3px solid #fdfdfd;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.calendar-header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.7rem;
+  margin: 12px 0 5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.subtitle {
+  font-weight: 400;
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.8px;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.calendar-month {
+  padding: 22px;
+}
+
+.month-name {
+  text-align: center;
+  font-weight: 700;
+  color: #8e44ad;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  color: #3498db;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+.days div {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f4f4f4;
+  transition: 0.3s ease;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.days div:hover:not(.highlight-day) {
+  background-color: #ecf0f1;
+  transform: scale(1.05);
+}
+
+.highlight-day {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: white;
+  font-weight: bold;
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(231, 76, 60, 0.35);
+  position: relative;
+}
+
+.highlight-day::after {
+  content: '🎂';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Optional responsiveness */
+@media (max-width: 500px) {
+  .calendar-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .month-name {
+    font-size: 1.1rem;
+  }
+
+  .days div {
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .age-badge {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+}
+
+/* Animated Section - Premium Redesign */
+.animated-scene {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  position: relative;
+  z-index: 5;
+  perspective: 1000px;
+}
+
+.scene {
+  position: relative;
+  width: 90%;
+  max-width: 380px;
+  height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(5, 5, 5, 0.4), rgba(255,255,255,0.15));
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 12px 40px rgba(253, 121, 168, 0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transform-style: preserve-3d;
+  animation: sceneFloat 8s ease-in-out infinite;
+}
+
+@keyframes sceneFloat {
+  0%, 100% { transform: translateY(0) rotateX(1deg) rotateY(1deg); }
+  50% { transform: translateY(-15px) rotateX(-1deg) rotateY(-1deg); }
+}
+
+.boy, .girl {
+  position: absolute;
+  bottom: 25px;
+  width: 55px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.head {
+  width: 38px;
+  height: 38px;
+  background: #050505;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.1),
+    inset 0 -2px 2px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.head::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+}
+
+.body {
+  width: 7px;
+  height: 55px;
+  background: #1b1a1a;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 17px;
+  height: 10px;
+  background: #0a0a0a;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.arm {
+  width: 38px;
+  height: 6px;
+  background: #080808;
+  margin-top: 6px;
+  position: relative;
+  transform-origin: 5px center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.flower {
+  position: absolute;
+  right: -9px;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  background: #ac0a45;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 
+    0 0 15px #1f010c,
+    0 0 30px rgba(8, 8, 8, 0.4);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: flowerGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes flowerGlow {
+  0% { box-shadow: 0 0 10px #b8184d, 0 0 20px rgba(253, 121, 168, 0.4); }
+  100% { box-shadow: 0 0 20px #5e0021, 0 0 40px rgba(253, 121, 168, 0.6); }
+}
+
+.boy {
+  left: -55px;
+  animation: boyWalk 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes boyWalk {
+  0% { left: -55px; transform: rotateY(0); }
+  40% { left: 100px; transform: rotateY(0); }
+  60% { transform: rotateY(5deg); }
+  80% { transform: rotateY(-3deg); }
+  100% { left: 100px; transform: rotateY(0); }
+}
+
+.girl {
+  right: 35px;
+  transform-origin: center bottom;
+}
+
+.girl .head {
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.girl .head::before, 
+.girl .head::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(45deg, #1b020e, #070707);
+  border-radius: 50%;
+  top: 13px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 8px rgba(10, 10, 10, 0.6);
+}
+
+.girl .head::before {
+  left: 9px;
+  transition-delay: 0.1s;
+}
+
+.girl .head::after {
+  left: 22px;
+  transition-delay: 0.2s;
+}
+
+.heart {
+  position: absolute;
+  font-size: 22px;
+  color: #f03434;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(255, 107, 107, 0.7));
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center bottom;
+}
+
+.caption {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  font-style: italic;
+  opacity: 0;
+  text-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(253, 121, 168, 0.5);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(20px);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  border: none;
+  color: rgb(26, 25, 25);
+  padding: 16px 35px;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  box-shadow: 
+    0 6px 25px rgba(253, 121, 168, 0.5),
+    0 0 0 2px rgba(255,255,255,0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e84393, #fd79a8);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(30deg) translate(-20%, -50%);
+  transition: all 0.8s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 
+    0 10px 30px rgba(129, 11, 52, 0.6),
+    0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:hover::after {
+  animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  0% { transform: rotate(30deg) translate(-20%, -50%); }
+  100% { transform: rotate(30deg) translate(120%, -50%); }
+}
+
+.btn.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(0) scale(1.05); }
+}
+
+/* Enhanced animations for the girl's reaction */
+.girl.active {
+  animation: girlHappy 0.8s ease;
+}
+
+@keyframes girlHappy {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-10px) scale(1.05); }
+  50% { transform: translateY(0) scale(0.98); }
+  75% { transform: translateY(-5px) scale(1.02); }
+}
+/* Birthday Letter Modal - Premium Formal Design */
+.birthday-letter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease-out;
+}
+
+.birthday-letter.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Luxury Birthday Letter Design */
+.birthday-letter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 5, 15, 0.96);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-out;
+}
+
+.birthday-letter.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Luxury Paper Design */
+.letter {
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(255,240,245,0.8) 0%, rgba(255,248,250,0.9) 100%),
+    url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  border-radius: 8px;
+  width: 90%;
+  max-width: 580px;
+  padding: 50px 45px;
+  box-shadow: 
+    0 40px 90px rgba(214, 51, 132, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 0 50px rgba(214, 51, 132, 0.1) inset;
+  position: relative;
+  overflow: hidden;
+  font-family: 'EB Garamond', serif;
+  border: 1px solid #f0e0d0;
+  animation: luxuryAppear 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center;
+  transform-style: preserve-3d;
+}
+
+/* Gold Foil Border */
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(214, 175, 100, 0.4);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Decorative Corner Elements */
+.letter::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d63384" opacity="0.1" d="M30,0 L100,0 L100,70 C70,60 40,80 0,100 L0,30 C20,20 40,10 30,0 Z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+
+/* Letter Animation */
+@keyframes luxuryAppear {
+  from {
+    transform: translateY(40px) rotateX(10deg) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Letter Header with Floral Accent */
+.letter-header {
+  position: relative;
+  margin-bottom: 40px;
+  text-align: center;
+  z-index: 2;
+}
+
+.letter-header::before {
+  content: '✻';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #d63384;
+  opacity: 0.6;
+}
+
+/* Title - Engraved Style */
+.letter h2 {
+  font-family: 'Playfair Display SC', serif;
+  color: #3a2a1e;
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.letter h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d63384, transparent);
+}
+
+/* Date - Elegant Script */
+.letter-date {
+  font-family: 'Alex Brush', cursive;
+  color: #d63384;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Content - Luxurious Typography */
+.letter-content {
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #4a4238;
+  padding: 10px 0;
+  text-align: justify;
+  hyphens: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* First Paragraph Special Styling */
+.letter-content p:first-of-type {
+  font-size: 1.25rem;
+  line-height: 2.1;
+  position: relative;
+  padding-left: 30px;
+}
+
+.letter-content p:first-of-type::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: rgba(214, 51, 132, 0.2);
+  line-height: 0.8;
+}
+
+/* Signature Section - Wax Seal Effect */
+.signature-container {
+  margin-top: 50px;
+  text-align: right;
+  position: relative;
+  padding-right: 100px;
+}
+
+.signature-line {
+  display: inline-block;
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c7b8a5, transparent);
+  margin-bottom: 8px;
+}
+
+.signature {
+  font-family: 'Parisienne', cursive;
+  font-size: 2.4rem;
+  color: #d63384;
+  line-height: 1;
+  display: block;
+  position: relative;
+}
+
+.signature::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: 
+    radial-gradient(circle at center, #d63384 0%, #9c275e 70%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23fff" d="M50,20 C60,30 70,40 80,50 C70,60 60,70 50,80 C40,70 30,60 20,50 C30,40 40,30 50,20 Z"/></svg>');
+  background-size: cover;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.signature-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #7a6b5e;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .letter {
+    padding: 40px 35px;
+  }
+  .letter h2 {
+    font-size: 2.4rem;
+  }
+  .letter-content {
+    font-size: 1.1rem;
+  }
+  .signature-container {
+    padding-right: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter {
+    padding: 30px 25px;
+  }
+  .letter h2 {
+    font-size: 2rem;
+  }
+  .letter-content p:first-of-type {
+    padding-left: 20px;
+    font-size: 1.15rem;
+  }
+  .signature {
+    font-size: 2rem;
+  }
+  .signature::after {
+    width: 40px;
+    height: 40px;
+    right: -50px;
+  }
+}
